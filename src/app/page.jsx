@@ -135,6 +135,8 @@ function TaskList(props) {
       onDrop={(ev) => drop(ev)}
       onDragOver={(ev) => allowDrop(ev)}
     >
+      {" "}
+      <img className="post-it" src="/po.png" alt="post-it"></img>
       <h2>{title}</h2>
       {tasks
         .filter((task) => task.taskTypeId === taskTypeId)
