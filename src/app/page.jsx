@@ -197,8 +197,8 @@ export default function App() {
             title={status.name}
           ></TaskList>
         ))}
-        {}
       </div>
+      <h3 className="text-center text-sm"> © 2023 karim guettech</h3>
     </div>
   );
 }
