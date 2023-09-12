@@ -23,10 +23,9 @@ const taskStatuses = [
 
 function getTasks() {
   const ISSERVER = typeof window === "undefined";
-  if (!ISSERVER) {
-    const data = localStorage.getItem("tasks");
-    return data ? JSON.parse(data) : [];
-  }
+
+  const data = localStorage.getItem("tasks");
+  return data ? JSON.parse(data) : [];
 }
 
 function setTasks(tasks) {
