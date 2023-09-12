@@ -26,7 +26,7 @@ function getTasks() {
   if (!ISSERVER) {
     const data = localStorage.getItem("tasks");
     return data ? JSON.parse(data) : [];
-  } else return [];
+  } else getTasks();
 }
 
 function setTasks(tasks) {
