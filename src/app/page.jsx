@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const taskStatuses = [
@@ -20,14 +21,6 @@ const taskStatuses = [
     name: "Delegated",
   },
 ];
-
-function getTasks() {
-  const ISSERVER = typeof window === "undefined";
-  if (!ISSERVER) {
-    const data = localStorage.getItem("tasks");
-    return data ? JSON.parse(data) : [];
-  }
-}
 
 function setTasks(tasks) {
   localStorage.setItem("tasks", tasks);
@@ -175,12 +168,29 @@ function drag(ev, task) {
 }
 
 export default function App() {
+  function getTasks() {
+    return store ? JSON.parse(store) : [];
+  }
+  const [store, setStore] = useState();
+
+  useEffect(() => {
+    setStore(localStorage.getItem("tasks"));
+  }, []);
+
   const [tasks, setTasks] = useState(TaskModel.getTasks());
   return (
     <div className="container">
+      {" "}
       <CreateTask setTasks={setTasks}></CreateTask>
       <div className="task-container">
-        <h1>Task Handler</h1>
+        {" "}
+        <div className="tracker">
+          {" "}
+          <img className="post-it" src="/po.png" alt="post-it"></img>{" "}
+          <h1>
+            Task<br className="space-title"></br> Tracker
+          </h1>
+        </div>
         {taskStatuses.map((status) => (
           <TaskList
             key={status.id}
