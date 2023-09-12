@@ -327,8 +327,6 @@ h1 {
     border-bottom: 3px solid #0f2f5718;
   }
   .post-it {
-    position: absolute;
-    top: -90px;
     color: #e5e5e5;
     left: 180px;
     filter: invert();
@@ -340,6 +338,9 @@ h1 {
     left: 250px;
     font-size: 35px;
     position: static;
+  }
+  br {
+    display: none;
   }
   .space-title {
     display: none;
@@ -355,7 +356,11 @@ h1 {
     margin-right: -10px;
   }
 }
-
+.scritta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 @media only screen and (max-width: 550px) {
   .task-list {
     width: 99%;

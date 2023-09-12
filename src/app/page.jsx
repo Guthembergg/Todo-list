@@ -136,7 +136,6 @@ function TaskList(props) {
       onDragOver={(ev) => allowDrop(ev)}
     >
       {" "}
-      <img className="post-it" src="/po.png" alt="post-it"></img>
       <h2>{title}</h2>
       {tasks
         .filter((task) => task.taskTypeId === taskTypeId)
@@ -182,7 +181,13 @@ export default function App() {
     <div className="container">
       <CreateTask setTasks={setTasks}></CreateTask>
       <div className="task-container">
-        <h1>Task Handler</h1>
+        {" "}
+        <div className="scritta">
+          <img className="post-it" src="/po.png" alt="post-it"></img>
+          <h1>
+            Task<br></br> Handler
+          </h1>
+        </div>
         {taskStatuses.map((status) => (
           <TaskList
             key={status.id}
