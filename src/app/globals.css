@@ -71,6 +71,7 @@ h2 {
   /* border: 1px solid #fff; */
 }
 h1 {
+  height: 250px;
   position: absolute;
   top: -280px;
   bottom: 0px;
