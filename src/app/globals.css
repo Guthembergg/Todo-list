@@ -329,16 +329,16 @@ h1 {
   }
   .post-it {
     color: #e5e5e5;
-    left: 180px;
     filter: invert();
     width: 80px;
     position: static;
   }
   h1 {
-    top: -60px;
+    top: -80px;
     left: 250px;
     font-size: 35px;
     position: static;
+    height: 80px;
   }
   br {
     display: none;
