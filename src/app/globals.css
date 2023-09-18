@@ -366,4 +366,13 @@ h1 {
   .task-list {
     width: 99%;
   }
+  h1 {
+    margin-bottom: 30px;
+  }
+  .post-it {
+    margin-bottom: 70px;
+  }
+}
+.task-list:hover {
+  transform: scale(1.05);
 }
