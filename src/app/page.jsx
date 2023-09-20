@@ -103,7 +103,7 @@ function Task(props) {
   return (
     <div className="task" draggable="true" onDragStart={(ev) => drag(ev, task)}>
       <div className="task-name">{task.companyName}</div>{" "}
-      <div className="text-sm text-italics text-black">{task.person}</div>
+      <div className="task-person">{task.person}</div>
       <div className="task-date-and-type-container">
         <div className="task-date">{new Date(task.id).toDateString()}</div>
         <div className="task-type">{task.taskType.name}</div>
@@ -151,39 +151,46 @@ export default function App() {
     }
 
     return (
-      <div className="create-task">
-        <input
-          id="company-name"
-          type="text"
-          placeholder="Task name"
-          value={currentTask}
-          onChange={(ev) => setCurrentTask(ev.target.value)}
-        />{" "}
-        <input
-          id="company-name"
-          type="text"
-          placeholder="Person name"
-          value={person}
-          onChange={(ev) => setPerson(ev.target.value)}
-        />
-        <select
-          id="task-type"
-          name="task-type"
-          className="select-css"
-          defaultValue={currentTaskType}
-          onChange={(ev) => setCurrentTaskType(ev.target.value)}
-        >
-          {taskStatuses.map((task) => {
-            return (
-              <option key={task.id} value={task.id}>
-                {task.name}
-              </option>
-            );
-          })}
-        </select>
-        <button className="add-task-button" onClick={addTask}>
-          + Add Task
-        </button>
+      <div className="create-task ">
+        <div className="task-cont">
+          {" "}
+          <input
+            className="input-task"
+            id="company-name"
+            type="text"
+            placeholder="Task name"
+            value={currentTask}
+            onChange={(ev) => setCurrentTask(ev.target.value)}
+          />{" "}
+          <input
+            className="input-task"
+            id="company-name"
+            type="text"
+            placeholder="Person name"
+            value={person}
+            onChange={(ev) => setPerson(ev.target.value)}
+          />{" "}
+        </div>
+        <div>
+          <select
+            id="task-type"
+            name="task-type"
+            className="select-css "
+            defaultValue={currentTaskType}
+            onChange={(ev) => setCurrentTaskType(ev.target.value)}
+          >
+            {taskStatuses.map((task) => {
+              return (
+                <option key={task.id} value={task.id}>
+                  {task.name}
+                </option>
+              );
+            })}
+          </select>{" "}
+          <button className="add-task-button mt-4" onClick={addTask}>
+            + Add Task
+          </button>
+        </div>
       </div>
     );
   }

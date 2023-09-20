@@ -161,10 +161,10 @@ h1 {
   margin: auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
 }
-
+.input-task {
+  width: 90% !important;
+}
 #company-name {
   padding: 7px 10px;
   margin: 5px 0;
@@ -264,7 +264,11 @@ h1 {
   background: #00587a;
   color: #fff;
 }
-
+.task-person {
+  color: rgb(221, 158, 32) !important;
+  font-size: 14px;
+  font-style: italic;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -299,6 +303,9 @@ h1 {
   color: black;
 }
 @media only screen and (max-width: 830px) {
+  .input-task {
+    width: 90% !important;
+  }
   .task-container {
     display: flex;
     flex-direction: column;
@@ -321,6 +328,7 @@ h1 {
   .task {
     margin-top: 5px;
   }
+
   h2 {
     padding-bottom: 5px;
     margin: 0;
