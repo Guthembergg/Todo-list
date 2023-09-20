@@ -173,7 +173,15 @@ h1 {
   border: none;
   width: 360px;
 }
-
+#person-name {
+  color: black;
+  padding: 7px 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  font-size: 16px;
+  border: none;
+  width: 360px;
+}
 .select-css {
   display: inline-block;
   font-size: 16px;
@@ -302,6 +310,7 @@ h1 {
 #company-name {
   color: black;
 }
+
 @media only screen and (max-width: 830px) {
   .input-task {
     width: 90% !important;

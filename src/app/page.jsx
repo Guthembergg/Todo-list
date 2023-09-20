@@ -120,14 +120,19 @@ function drag(ev, task) {
 }
 
 export default function App() {
-  const [person, setPerson] = useState();
-
   function CreateTask(props) {
-    const { currentTask, setCurrentTask, currentTaskType, setCurrentTaskType } =
-      useCurrentTask();
+    const {
+      currentTask,
+      setCurrentTask,
+      currentTaskType,
+      setCurrentTaskType,
+      person,
+      setPerson,
+    } = useCurrentTask();
 
     function addTask() {
       const companyName = currentTask;
+      const person2 = person;
       if (!companyName) {
         return;
       }
@@ -138,7 +143,7 @@ export default function App() {
         companyName: companyName,
         taskTypeId: taskTypeId,
         taskType: taskType,
-        person: person,
+        person: person2,
       };
       const updatedTask = [...TaskModel.getTasks(), task];
       TaskModel.setTasks(JSON.stringify(updatedTask));
@@ -164,12 +169,12 @@ export default function App() {
           />{" "}
           <input
             className="input-task"
-            id="company-name"
+            id="person-name"
             type="text"
             placeholder="Person name"
             value={person}
             onChange={(ev) => setPerson(ev.target.value)}
-          />{" "}
+          />
         </div>
         <div>
           <select
@@ -223,11 +228,15 @@ export default function App() {
 
 function useCurrentTask() {
   const [currentTask, setCurrentTask] = useState("");
+  const [person, setPerson] = useState("");
+
   const [currentTaskType, setCurrentTaskType] = useState("1");
   return {
     currentTask,
     setCurrentTask,
     currentTaskType,
     setCurrentTaskType,
+    person,
+    setPerson,
   };
 }
