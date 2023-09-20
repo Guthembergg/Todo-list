@@ -73,7 +73,7 @@ h2 {
 h1 {
   height: 250px;
   position: absolute;
-  top: -280px;
+  top: -350px;
   bottom: 0px;
   left: 85px;
   font-size: 45px;
@@ -84,7 +84,7 @@ h1 {
 }
 .post-it {
   position: absolute;
-  top: -300px;
+  top: -370px;
   color: #e5e5e5;
   left: -25px;
   filter: invert();
@@ -319,7 +319,6 @@ h1 {
     margin-top: 20px;
   }
   .task {
-    height: 80px;
     margin-top: 5px;
   }
   h2 {

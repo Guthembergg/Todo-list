@@ -38,63 +38,6 @@ const TaskModel = {
   setTasks,
 };
 
-function CreateTask(props) {
-  const { currentTask, setCurrentTask, currentTaskType, setCurrentTaskType } =
-    useCurrentTask();
-
-  function addTask() {
-    const companyName = currentTask;
-    if (!companyName) {
-      return;
-    }
-    const taskTypeId = +currentTaskType;
-    const taskType = taskStatuses.find((item) => item.id === taskTypeId);
-    const task = {
-      id: Date.now(),
-      companyName: companyName,
-      taskTypeId: taskTypeId,
-      taskType: taskType,
-    };
-    const updatedTask = [...TaskModel.getTasks(), task];
-    TaskModel.setTasks(JSON.stringify(updatedTask));
-
-    props.setTasks(updatedTask);
-
-    setCurrentTask("");
-    setCurrentTaskType("1");
-  }
-
-  return (
-    <div className="create-task">
-      <input
-        id="company-name"
-        type="text"
-        placeholder="Task name"
-        value={currentTask}
-        onChange={(ev) => setCurrentTask(ev.target.value)}
-      />
-      <select
-        id="task-type"
-        name="task-type"
-        className="select-css"
-        defaultValue={currentTaskType}
-        onChange={(ev) => setCurrentTaskType(ev.target.value)}
-      >
-        {taskStatuses.map((task) => {
-          return (
-            <option key={task.id} value={task.id}>
-              {task.name}
-            </option>
-          );
-        })}
-      </select>
-      <button className="add-task-button" onClick={addTask}>
-        + Add Task
-      </button>
-    </div>
-  );
-}
-
 function TaskList(props) {
   const { tasks, setTasks, taskTypeId, title } = props;
 
@@ -159,7 +102,8 @@ function Task(props) {
 
   return (
     <div className="task" draggable="true" onDragStart={(ev) => drag(ev, task)}>
-      <div className="task-name">{task.companyName}</div>
+      <div className="task-name">{task.companyName}</div>{" "}
+      <div className="text-sm text-italics text-black">{task.person}</div>
       <div className="task-date-and-type-container">
         <div className="task-date">{new Date(task.id).toDateString()}</div>
         <div className="task-type">{task.taskType.name}</div>
@@ -176,6 +120,73 @@ function drag(ev, task) {
 }
 
 export default function App() {
+  const [person, setPerson] = useState();
+
+  function CreateTask(props) {
+    const { currentTask, setCurrentTask, currentTaskType, setCurrentTaskType } =
+      useCurrentTask();
+
+    function addTask() {
+      const companyName = currentTask;
+      if (!companyName) {
+        return;
+      }
+      const taskTypeId = +currentTaskType;
+      const taskType = taskStatuses.find((item) => item.id === taskTypeId);
+      const task = {
+        id: Date.now(),
+        companyName: companyName,
+        taskTypeId: taskTypeId,
+        taskType: taskType,
+        person: person,
+      };
+      const updatedTask = [...TaskModel.getTasks(), task];
+      TaskModel.setTasks(JSON.stringify(updatedTask));
+
+      props.setTasks(updatedTask);
+
+      setCurrentTask("");
+      setCurrentTaskType("1");
+      setPerson("");
+    }
+
+    return (
+      <div className="create-task">
+        <input
+          id="company-name"
+          type="text"
+          placeholder="Task name"
+          value={currentTask}
+          onChange={(ev) => setCurrentTask(ev.target.value)}
+        />{" "}
+        <input
+          id="company-name"
+          type="text"
+          placeholder="Person name"
+          value={person}
+          onChange={(ev) => setPerson(ev.target.value)}
+        />
+        <select
+          id="task-type"
+          name="task-type"
+          className="select-css"
+          defaultValue={currentTaskType}
+          onChange={(ev) => setCurrentTaskType(ev.target.value)}
+        >
+          {taskStatuses.map((task) => {
+            return (
+              <option key={task.id} value={task.id}>
+                {task.name}
+              </option>
+            );
+          })}
+        </select>
+        <button className="add-task-button" onClick={addTask}>
+          + Add Task
+        </button>
+      </div>
+    );
+  }
   const [tasks, setTasks] = useState(TaskModel.getTasks());
   return (
     <div className="container">
