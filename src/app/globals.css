@@ -63,7 +63,7 @@ h2 {
 .task-container {
   display: flex;
   justify-content: center;
-  margin-top: 100px;
+  margin-top: 30px;
   margin-bottom: 20px;
   position: relative;
   max-height: 1000px;
@@ -73,7 +73,7 @@ h2 {
 h1 {
   height: 250px;
   position: absolute;
-  top: -350px;
+  top: -300px;
   bottom: 0px;
   left: 85px;
   font-size: 45px;
@@ -84,7 +84,7 @@ h1 {
 }
 .post-it {
   position: absolute;
-  top: -370px;
+  top: -320px;
   color: #e5e5e5;
   left: -25px;
   filter: invert();
@@ -348,13 +348,19 @@ h1 {
     filter: invert();
     width: 80px;
     position: static;
+    padding: 0;
   }
   h1 {
     top: -80px;
     left: 250px;
     font-size: 35px;
     position: static;
-    height: 80px;
+    height: 20px;
+    margin-bottom: 60px;
+  }
+  .scritta {
+    display: flex;
+    align-items: center;
   }
   br {
     display: none;
@@ -383,10 +389,10 @@ h1 {
     width: 99%;
   }
   h1 {
-    margin-bottom: 30px;
+    margin-bottom: 60px;
   }
-  .post-it {
-    margin-bottom: 70px;
+  .scritta {
+    margin-bottom: 20px;
   }
 }
 .task-list:hover {
